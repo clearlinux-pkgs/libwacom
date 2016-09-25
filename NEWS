@@ -1,3 +1,125 @@
+libwacom 0.22:
+- New API: libwacom_get_paired_device()
+- The EKR has the modes enabled now
+- Fixes to the show-svg-image tool
+
+libwacom 0.21:
+- New devices:
+  - MTE-450 "Bamboo", Lenovo ThinkPad Tablet 10
+- Layout fixes for the Express Key Remote, Intuos series
+
+libwacom 0.20:
+- New devices: "One by wacom"
+- Layout fixes, especially for the Express Key Remote
+
+libwacom 0.19:
+- New devices:
+  - DTK-1651, ISDv4 0x504a
+- Quirk added to prevent udev tagging HUION Consumer Control devices as
+  tablets
+
+libwacom 0.18:
+- Renamed ".tablet" files for Bamboo devices
+- Modified user-visible names of Bamboo devices
+  - "Wacom Bamboo 16FG 4x5" -> "Wacom Bamboo Capture"
+  - "Wacom Bamboo 2FG 4x5" -> "Wacom Bamboo (2FG)"
+  - "Wacom Bamboo 2FG 6x8" -> "Wacom Bamboo Fun medium (2FG)"
+  - "Wacom Bamboo 2FG" -> "Wacom Bamboo Touch (2FG)"
+  - "Wacom Bamboo Craft" -> "Wacom Bamboo Fun small (2FG)"
+  - "Wacom Bamboo Pen" -> "Wacom Bamboo Pen small"
+- New devices:
+  - Missing gen-1 Bamboo (0xd5)
+  - Missing gen-2.5 Bamboos (0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xdb)
+  - Missing gen-3 Bamboos (0xdc, 0xdd, 0dxf)
+
+libwacom 0.17:
+- New devices:
+  - Cintiq Companion 2 (DTH-1310)
+  - ExpressKey Remote
+- New WacomClass: WCLASS_REMOTE
+
+libwacom 0.16:
+- Data files for Intuos and Intuos 2 series added
+- New stylus ID 0x8e2
+
+libwacom 0.15:
+- New devices:
+  - ISDv4 0x4800 (Dell Venue 10 5050 Android tablet)
+- Bustype i2c is now supported
+
+libwacom 0.14:
+- New devices:
+  - Cintiq 13HD touch
+- Fixes to the udev rule set to tag uinput devices correctly too
+- Integrated tabled are not marked as ID_INPUT_TOUCHPAD anymore now
+
+libwacom 0.13:
+- New devices:
+  - DTU-1141
+  - Huion H610 Pro
+- Several memory leak fixes
+- Added libwacom_match_get_name() to allow data-file matching on the name as
+  well as the pid/vid
+
+libwacom 0.12:
+- Added libwacom_stylus_has_wheel() for relative wheel detection
+- Added libwacom_stylus_get_axes() for a list of supported axes
+- New devices:
+  - Cintiq 27QHD, Cintiq 27QHD Touch
+  - DTU-1031X
+  - Intuos Pen Medium
+- Reworked udev rules
+  - be more restrictive when to set ID_INPUT_TOUCHPAD
+  - unset ID_INPUT_JOYSTICK on tablet devices
+  - tag the Pad device as ID_INPUT_TABLET_PAD
+
+libwacom 0.11:
+- Better detection of wireless tablets on kernels 3.18
+- New devices:
+  - Cintiq Companion
+
+libwacom 0.10:
+- Fixed bus detection of Bluetooth tablets on kernels 3.14
+  and later (bbe317540)
+- New devices:
+  - ISDV4 0x12C, 116, 4004, 5000, 5002
+
+libwacom 0.9.0:
+- Add support for TouchSwitch keyword
+- New devices:
+  - Intuos series
+  - Pen&Touch (2nd gen)
+  - DTU-1031
+  - Cintiq Companion Hybrid
+
+libwacom 0.8.0:
+- New devices:
+  - Cintiq 13HD, 22HD touch
+  - DTH-2242, DTU-1931,
+  - ISDv4 EC, ED, 10F
+  - Intuos Pro
+
+libwacom 0.7.1:
+- New devices:
+  - ISDv4 10d
+- Better checks to prevent bad databases
+
+libwacom 0.7:
+- New devices: 
+  - Cintiq 22HD, 24HD touch, 
+  - ISDv4 E5, 100, 101
+- Support for SVG layouts of the tablets
+- New APIs for:
+  - list status LEDs
+  - list integration flags (differ between builtin and screen-tablets)
+
+libwacom 0.6:
+- More metadata for:
+  - NTrig tablet PC
+  - ISDv4 0x93, 0x90, 0xED, 0xEF
+  - Bamboo Pen, Fun, Craft, Touch
+- Support for debugging with uinput devices
+
 libwacom 0.5:
 - Add support for multiple match statements
 - Add support for bluetotooth devices
