@@ -4,7 +4,7 @@
 #
 Name     : libwacom
 Version  : 0.24
-Release  : 3
+Release  : 4
 URL      : http://downloads.sourceforge.net/project/linuxwacom/libwacom/libwacom-0.24.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/linuxwacom/libwacom/libwacom-0.24.tar.bz2
 Summary  : Wacom model feature query library
