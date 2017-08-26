@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.25
-Release  : 6
-URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.25.tar.bz2
-Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.25.tar.bz2
-Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.25.tar.bz2.sig
+Version  : 0.26
+Release  : 7
+URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2
+Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2
+Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -67,14 +67,14 @@ lib components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.25
+%setup -q -n libwacom-0.26
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1500992492
+export SOURCE_DATE_EPOCH=1503716837
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -90,7 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1500992492
+export SOURCE_DATE_EPOCH=1503716837
 rm -rf %{buildroot}
 %make_install
 
@@ -139,6 +139,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/cintiq-pro-13.tablet
 /usr/share/libwacom/cintiq-pro-16.tablet
 /usr/share/libwacom/dtf-720.tablet
+/usr/share/libwacom/dth-1152.tablet
 /usr/share/libwacom/dth-2242.tablet
 /usr/share/libwacom/dti-520.tablet
 /usr/share/libwacom/dtk-1651.tablet
@@ -166,7 +167,9 @@ rm -rf %{buildroot}
 /usr/share/libwacom/intuos-m-p2.tablet
 /usr/share/libwacom/intuos-m-pt.tablet
 /usr/share/libwacom/intuos-m-pt2.tablet
+/usr/share/libwacom/intuos-pro-2-l-wl.tablet
 /usr/share/libwacom/intuos-pro-2-l.tablet
+/usr/share/libwacom/intuos-pro-2-m-wl.tablet
 /usr/share/libwacom/intuos-pro-2-m.tablet
 /usr/share/libwacom/intuos-pro-l.tablet
 /usr/share/libwacom/intuos-pro-m.tablet
@@ -210,9 +213,15 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-12c.tablet
 /usr/share/libwacom/isdv4-4004.tablet
 /usr/share/libwacom/isdv4-4800.tablet
+/usr/share/libwacom/isdv4-4809.tablet
 /usr/share/libwacom/isdv4-4814.tablet
+/usr/share/libwacom/isdv4-481a.tablet
+/usr/share/libwacom/isdv4-4822.tablet
+/usr/share/libwacom/isdv4-4824.tablet
+/usr/share/libwacom/isdv4-484c.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
+/usr/share/libwacom/isdv4-5010.tablet
 /usr/share/libwacom/isdv4-5013.tablet
 /usr/share/libwacom/isdv4-5014.tablet
 /usr/share/libwacom/isdv4-503e.tablet
@@ -310,4 +319,4 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libwacom.so.2
-/usr/lib64/libwacom.so.2.5.3
+/usr/lib64/libwacom.so.2.5.4
