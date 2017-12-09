@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.26
-Release  : 7
-URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2
-Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2
-Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.26.tar.bz2.sig
+Version  : 0.27
+Release  : 8
+URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
+Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
+Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -67,20 +67,20 @@ lib components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.26
+%setup -q -n libwacom-0.27
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503716837
+export SOURCE_DATE_EPOCH=1512838631
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -90,7 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1503716837
+export SOURCE_DATE_EPOCH=1512838631
 rm -rf %{buildroot}
 %make_install
 
@@ -138,6 +138,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/cintiq-companion.tablet
 /usr/share/libwacom/cintiq-pro-13.tablet
 /usr/share/libwacom/cintiq-pro-16.tablet
+/usr/share/libwacom/dell-canvas-27.tablet
 /usr/share/libwacom/dtf-720.tablet
 /usr/share/libwacom/dth-1152.tablet
 /usr/share/libwacom/dth-2242.tablet
@@ -218,6 +219,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-481a.tablet
 /usr/share/libwacom/isdv4-4822.tablet
 /usr/share/libwacom/isdv4-4824.tablet
+/usr/share/libwacom/isdv4-4831.tablet
 /usr/share/libwacom/isdv4-484c.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
@@ -302,6 +304,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/layouts/intuos5-s.svg
 /usr/share/libwacom/layouts/mobilestudio-pro-13.svg
 /usr/share/libwacom/layouts/mobilestudio-pro-16.svg
+/usr/share/libwacom/layouts/xp-pen-star03.svg
 /usr/share/libwacom/libwacom.stylus
 /usr/share/libwacom/mobilestudio-pro-13.tablet
 /usr/share/libwacom/mobilestudio-pro-16.tablet
@@ -309,6 +312,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/one-by-wacom-m-p.tablet
 /usr/share/libwacom/one-by-wacom-s-p.tablet
 /usr/share/libwacom/serial-wacf004.tablet
+/usr/share/libwacom/xp-pen-star03.tablet
 
 %files dev
 %defattr(-,root,root,-)
@@ -319,4 +323,4 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libwacom.so.2
-/usr/lib64/libwacom.so.2.5.4
+/usr/lib64/libwacom.so.2.6.0
