@@ -6,7 +6,7 @@
 #
 Name     : libwacom
 Version  : 0.27
-Release  : 8
+Release  : 9
 URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
 Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
 Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2.sig
