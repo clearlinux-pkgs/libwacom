@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.27
-Release  : 9
-URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
-Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2
-Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.27.tar.bz2.sig
+Version  : 0.28
+Release  : 10
+URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2
+Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2
+Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -67,14 +67,14 @@ lib components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.27
+%setup -q -n libwacom-0.28
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512838631
+export SOURCE_DATE_EPOCH=1518270112
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -90,7 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1512838631
+export SOURCE_DATE_EPOCH=1518270112
 rm -rf %{buildroot}
 %make_install
 
@@ -121,6 +121,8 @@ rm -rf %{buildroot}
 /usr/share/libwacom/bamboo-4fg-se-m-pt.tablet
 /usr/share/libwacom/bamboo-4fg-se-s-pt.tablet
 /usr/share/libwacom/bamboo-one.tablet
+/usr/share/libwacom/bamboo-pad-wireless.tablet
+/usr/share/libwacom/bamboo-pad.tablet
 /usr/share/libwacom/cintiq-12wx.tablet
 /usr/share/libwacom/cintiq-13hd.tablet
 /usr/share/libwacom/cintiq-13hdt.tablet
@@ -138,13 +140,18 @@ rm -rf %{buildroot}
 /usr/share/libwacom/cintiq-companion.tablet
 /usr/share/libwacom/cintiq-pro-13.tablet
 /usr/share/libwacom/cintiq-pro-16.tablet
+/usr/share/libwacom/cintiq-pro-24-p.tablet
+/usr/share/libwacom/cintiq-pro-24-pt.tablet
+/usr/share/libwacom/cintiq-pro-32.tablet
 /usr/share/libwacom/dell-canvas-27.tablet
 /usr/share/libwacom/dtf-720.tablet
 /usr/share/libwacom/dth-1152.tablet
 /usr/share/libwacom/dth-2242.tablet
+/usr/share/libwacom/dth-2452.tablet
 /usr/share/libwacom/dti-520.tablet
 /usr/share/libwacom/dtk-1651.tablet
 /usr/share/libwacom/dtk-2241.tablet
+/usr/share/libwacom/dtk-2451.tablet
 /usr/share/libwacom/dtu-1031.tablet
 /usr/share/libwacom/dtu-1031x.tablet
 /usr/share/libwacom/dtu-1141.tablet
@@ -155,6 +162,8 @@ rm -rf %{buildroot}
 /usr/share/libwacom/generic.tablet
 /usr/share/libwacom/graphire-usb.tablet
 /usr/share/libwacom/graphire-wireless-8x6.tablet
+/usr/share/libwacom/graphire2-4x5.tablet
+/usr/share/libwacom/graphire2-5x7.tablet
 /usr/share/libwacom/graphire3-4x5.tablet
 /usr/share/libwacom/graphire3-6x8.tablet
 /usr/share/libwacom/graphire4-4x5.tablet
@@ -232,6 +241,14 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-5044.tablet
 /usr/share/libwacom/isdv4-5048.tablet
 /usr/share/libwacom/isdv4-504a.tablet
+/usr/share/libwacom/isdv4-5090.tablet
+/usr/share/libwacom/isdv4-5099.tablet
+/usr/share/libwacom/isdv4-509d.tablet
+/usr/share/libwacom/isdv4-50b6.tablet
+/usr/share/libwacom/isdv4-50b8.tablet
+/usr/share/libwacom/isdv4-50f1.tablet
+/usr/share/libwacom/isdv4-50f8.tablet
+/usr/share/libwacom/isdv4-5110.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -255,6 +272,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/layouts/bamboo-4fg-s-t.svg
 /usr/share/libwacom/layouts/bamboo-4fg-se-m-pt.svg
 /usr/share/libwacom/layouts/bamboo-4fg-se-s-pt.svg
+/usr/share/libwacom/layouts/bamboo-pad.svg
 /usr/share/libwacom/layouts/cintiq-12wx.svg
 /usr/share/libwacom/layouts/cintiq-13hd.svg
 /usr/share/libwacom/layouts/cintiq-20wsx.svg
@@ -266,8 +284,10 @@ rm -rf %{buildroot}
 /usr/share/libwacom/layouts/cintiq-companion-hybrid.svg
 /usr/share/libwacom/layouts/cintiq-companion.svg
 /usr/share/libwacom/layouts/dth-2242.svg
+/usr/share/libwacom/layouts/dth-2452.svg
 /usr/share/libwacom/layouts/dti-520.svg
 /usr/share/libwacom/layouts/dtk-1651.svg
+/usr/share/libwacom/layouts/dtk-2451.svg
 /usr/share/libwacom/layouts/dtu-1031.svg
 /usr/share/libwacom/layouts/dtu-1141.svg
 /usr/share/libwacom/layouts/ek-remote.svg
@@ -310,7 +330,9 @@ rm -rf %{buildroot}
 /usr/share/libwacom/mobilestudio-pro-16.tablet
 /usr/share/libwacom/n-trig-pen.tablet
 /usr/share/libwacom/one-by-wacom-m-p.tablet
+/usr/share/libwacom/one-by-wacom-m-p2.tablet
 /usr/share/libwacom/one-by-wacom-s-p.tablet
+/usr/share/libwacom/one-by-wacom-s-p2.tablet
 /usr/share/libwacom/serial-wacf004.tablet
 /usr/share/libwacom/xp-pen-star03.tablet
 
@@ -323,4 +345,4 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libwacom.so.2
-/usr/lib64/libwacom.so.2.6.0
+/usr/lib64/libwacom.so.2.6.1
