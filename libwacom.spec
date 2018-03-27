@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.28
-Release  : 10
-URL      : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2
-Source0  : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2
-Source99 : https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.28.tar.bz2.sig
+Version  : 0.29
+Release  : 11
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
+Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -67,14 +67,14 @@ lib components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.28
+%setup -q -n libwacom-0.29
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1518270112
+export SOURCE_DATE_EPOCH=1522112416
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -90,7 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1518270112
+export SOURCE_DATE_EPOCH=1522112416
 rm -rf %{buildroot}
 %make_install
 
@@ -244,6 +244,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-5090.tablet
 /usr/share/libwacom/isdv4-5099.tablet
 /usr/share/libwacom/isdv4-509d.tablet
+/usr/share/libwacom/isdv4-50b4.tablet
 /usr/share/libwacom/isdv4-50b6.tablet
 /usr/share/libwacom/isdv4-50b8.tablet
 /usr/share/libwacom/isdv4-50f1.tablet
