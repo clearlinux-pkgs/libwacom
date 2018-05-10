@@ -6,7 +6,7 @@
 #
 Name     : libwacom
 Version  : 0.29
-Release  : 11
+Release  : 12
 URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
 Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
 Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2.sig
