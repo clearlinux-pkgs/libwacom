@@ -5,16 +5,17 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.29
-Release  : 12
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2
-Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.29/libwacom-0.29.tar.bz2.sig
+Version  : 0.30
+Release  : 13
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2
+Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
 Requires: libwacom-bin
 Requires: libwacom-lib
+Requires: libwacom-license
 Requires: libwacom-data
 BuildRequires : doxygen
 BuildRequires : gettext
@@ -35,6 +36,7 @@ on-screen tablet", "what is the size of this model", etc.
 Summary: bin components for the libwacom package.
 Group: Binaries
 Requires: libwacom-data
+Requires: libwacom-license
 
 %description bin
 bin components for the libwacom package.
@@ -64,20 +66,29 @@ dev components for the libwacom package.
 Summary: lib components for the libwacom package.
 Group: Libraries
 Requires: libwacom-data
+Requires: libwacom-license
 
 %description lib
 lib components for the libwacom package.
 
 
+%package license
+Summary: license components for the libwacom package.
+Group: Default
+
+%description license
+license components for the libwacom package.
+
+
 %prep
-%setup -q -n libwacom-0.29
+%setup -q -n libwacom-0.30
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522200669
+export SOURCE_DATE_EPOCH=1533052693
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -93,8 +104,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522200669
+export SOURCE_DATE_EPOCH=1533052693
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/libwacom
+cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 %make_install
 
 %files
@@ -162,6 +175,8 @@ rm -rf %{buildroot}
 /usr/share/libwacom/dtu-1931.tablet
 /usr/share/libwacom/dtu-2231.tablet
 /usr/share/libwacom/ek-remote.tablet
+/usr/share/libwacom/elan-22e2.tablet
+/usr/share/libwacom/elan-2537.tablet
 /usr/share/libwacom/generic.tablet
 /usr/share/libwacom/graphire-usb.tablet
 /usr/share/libwacom/graphire-wireless-8x6.tablet
@@ -178,6 +193,8 @@ rm -rf %{buildroot}
 /usr/share/libwacom/intuos-9x12.tablet
 /usr/share/libwacom/intuos-m-p.tablet
 /usr/share/libwacom/intuos-m-p2.tablet
+/usr/share/libwacom/intuos-m-p3-wl.tablet
+/usr/share/libwacom/intuos-m-p3.tablet
 /usr/share/libwacom/intuos-m-pt.tablet
 /usr/share/libwacom/intuos-m-pt2.tablet
 /usr/share/libwacom/intuos-pro-2-l-wl.tablet
@@ -189,6 +206,8 @@ rm -rf %{buildroot}
 /usr/share/libwacom/intuos-pro-s.tablet
 /usr/share/libwacom/intuos-s-p.tablet
 /usr/share/libwacom/intuos-s-p2.tablet
+/usr/share/libwacom/intuos-s-p3-wl.tablet
+/usr/share/libwacom/intuos-s-p3.tablet
 /usr/share/libwacom/intuos-s-pt.tablet
 /usr/share/libwacom/intuos-s-pt2.tablet
 /usr/share/libwacom/intuos2-12x12.tablet
@@ -233,6 +252,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-4824.tablet
 /usr/share/libwacom/isdv4-4831.tablet
 /usr/share/libwacom/isdv4-484c.tablet
+/usr/share/libwacom/isdv4-485e.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -253,6 +273,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/isdv4-50f1.tablet
 /usr/share/libwacom/isdv4-50f8.tablet
 /usr/share/libwacom/isdv4-5110.tablet
+/usr/share/libwacom/isdv4-5146.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -300,6 +321,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/layouts/huion-h610-pro.svg
 /usr/share/libwacom/layouts/intuos-m-p.svg
 /usr/share/libwacom/layouts/intuos-m-p2.svg
+/usr/share/libwacom/layouts/intuos-m-p3.svg
 /usr/share/libwacom/layouts/intuos-m-pt.svg
 /usr/share/libwacom/layouts/intuos-m-pt2.svg
 /usr/share/libwacom/layouts/intuos-pro-2-l.svg
@@ -309,6 +331,7 @@ rm -rf %{buildroot}
 /usr/share/libwacom/layouts/intuos-pro-s.svg
 /usr/share/libwacom/layouts/intuos-s-p.svg
 /usr/share/libwacom/layouts/intuos-s-p2.svg
+/usr/share/libwacom/layouts/intuos-s-p3.svg
 /usr/share/libwacom/layouts/intuos-s-pt.svg
 /usr/share/libwacom/layouts/intuos-s-pt2.svg
 /usr/share/libwacom/layouts/intuos3-12x12.svg
@@ -350,3 +373,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/lib64/libwacom.so.2
 /usr/lib64/libwacom.so.2.6.1
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/libwacom/COPYING
