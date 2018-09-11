@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.30
-Release  : 13
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2
-Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.30/libwacom-0.30.tar.bz2.sig
+Version  : 0.31
+Release  : 14
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2
+Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -17,6 +17,7 @@ Requires: libwacom-bin
 Requires: libwacom-lib
 Requires: libwacom-license
 Requires: libwacom-data
+Requires: libwacom-man
 BuildRequires : doxygen
 BuildRequires : gettext
 BuildRequires : intltool
@@ -37,6 +38,7 @@ Summary: bin components for the libwacom package.
 Group: Binaries
 Requires: libwacom-data
 Requires: libwacom-license
+Requires: libwacom-man
 
 %description bin
 bin components for the libwacom package.
@@ -80,15 +82,23 @@ Group: Default
 license components for the libwacom package.
 
 
+%package man
+Summary: man components for the libwacom package.
+Group: Default
+
+%description man
+man components for the libwacom package.
+
+
 %prep
-%setup -q -n libwacom-0.30
+%setup -q -n libwacom-0.31
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533052693
+export SOURCE_DATE_EPOCH=1536642890
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -104,7 +114,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1533052693
+export SOURCE_DATE_EPOCH=1536642890
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/libwacom
 cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
@@ -185,6 +195,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/graphire3-4x5.tablet
 /usr/share/libwacom/graphire3-6x8.tablet
 /usr/share/libwacom/graphire4-4x5.tablet
+/usr/share/libwacom/graphire4-6x8.tablet
 /usr/share/libwacom/huion-h610-pro.tablet
 /usr/share/libwacom/intuos-12x12.tablet
 /usr/share/libwacom/intuos-12x18.tablet
@@ -245,6 +256,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/isdv4-12c.tablet
 /usr/share/libwacom/isdv4-4004.tablet
 /usr/share/libwacom/isdv4-4800.tablet
+/usr/share/libwacom/isdv4-4807.tablet
 /usr/share/libwacom/isdv4-4809.tablet
 /usr/share/libwacom/isdv4-4814.tablet
 /usr/share/libwacom/isdv4-481a.tablet
@@ -272,6 +284,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/isdv4-50b8.tablet
 /usr/share/libwacom/isdv4-50f1.tablet
 /usr/share/libwacom/isdv4-50f8.tablet
+/usr/share/libwacom/isdv4-50fd.tablet
 /usr/share/libwacom/isdv4-5110.tablet
 /usr/share/libwacom/isdv4-5146.tablet
 /usr/share/libwacom/isdv4-90.tablet
@@ -318,6 +331,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/layouts/ek-remote.svg
 /usr/share/libwacom/layouts/graphire-wireless-8x6.svg
 /usr/share/libwacom/layouts/graphire4-4x5.svg
+/usr/share/libwacom/layouts/graphire4-6x8.svg
 /usr/share/libwacom/layouts/huion-h610-pro.svg
 /usr/share/libwacom/layouts/intuos-m-p.svg
 /usr/share/libwacom/layouts/intuos-m-p2.svg
@@ -377,3 +391,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 %files license
 %defattr(-,root,root,-)
 /usr/share/doc/libwacom/COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/libwacom-list-local-devices.1
