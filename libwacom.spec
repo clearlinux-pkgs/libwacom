@@ -5,19 +5,19 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.31
-Release  : 14
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2
-Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.31/libwacom-0.31.tar.bz2.sig
+Version  : 0.32
+Release  : 15
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2
+Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
-Requires: libwacom-bin
-Requires: libwacom-lib
-Requires: libwacom-license
-Requires: libwacom-data
-Requires: libwacom-man
+Requires: libwacom-bin = %{version}-%{release}
+Requires: libwacom-data = %{version}-%{release}
+Requires: libwacom-lib = %{version}-%{release}
+Requires: libwacom-license = %{version}-%{release}
+Requires: libwacom-man = %{version}-%{release}
 BuildRequires : doxygen
 BuildRequires : gettext
 BuildRequires : intltool
@@ -36,9 +36,9 @@ on-screen tablet", "what is the size of this model", etc.
 %package bin
 Summary: bin components for the libwacom package.
 Group: Binaries
-Requires: libwacom-data
-Requires: libwacom-license
-Requires: libwacom-man
+Requires: libwacom-data = %{version}-%{release}
+Requires: libwacom-license = %{version}-%{release}
+Requires: libwacom-man = %{version}-%{release}
 
 %description bin
 bin components for the libwacom package.
@@ -55,10 +55,10 @@ data components for the libwacom package.
 %package dev
 Summary: dev components for the libwacom package.
 Group: Development
-Requires: libwacom-lib
-Requires: libwacom-bin
-Requires: libwacom-data
-Provides: libwacom-devel
+Requires: libwacom-lib = %{version}-%{release}
+Requires: libwacom-bin = %{version}-%{release}
+Requires: libwacom-data = %{version}-%{release}
+Provides: libwacom-devel = %{version}-%{release}
 
 %description dev
 dev components for the libwacom package.
@@ -67,8 +67,8 @@ dev components for the libwacom package.
 %package lib
 Summary: lib components for the libwacom package.
 Group: Libraries
-Requires: libwacom-data
-Requires: libwacom-license
+Requires: libwacom-data = %{version}-%{release}
+Requires: libwacom-license = %{version}-%{release}
 
 %description lib
 lib components for the libwacom package.
@@ -91,14 +91,14 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.31
+%setup -q -n libwacom-0.32
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536642890
+export SOURCE_DATE_EPOCH=1541435950
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -114,10 +114,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536642890
+export SOURCE_DATE_EPOCH=1541435950
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/libwacom
-cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
+cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 %make_install
 
 %files
@@ -181,11 +181,13 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/dtu-1031.tablet
 /usr/share/libwacom/dtu-1031x.tablet
 /usr/share/libwacom/dtu-1141.tablet
+/usr/share/libwacom/dtu-1141b.tablet
 /usr/share/libwacom/dtu-1631.tablet
 /usr/share/libwacom/dtu-1931.tablet
 /usr/share/libwacom/dtu-2231.tablet
 /usr/share/libwacom/ek-remote.tablet
 /usr/share/libwacom/elan-22e2.tablet
+/usr/share/libwacom/elan-24db.tablet
 /usr/share/libwacom/elan-2537.tablet
 /usr/share/libwacom/generic.tablet
 /usr/share/libwacom/graphire-usb.tablet
@@ -265,11 +267,13 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/isdv4-4831.tablet
 /usr/share/libwacom/isdv4-484c.tablet
 /usr/share/libwacom/isdv4-485e.tablet
+/usr/share/libwacom/isdv4-486a.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
 /usr/share/libwacom/isdv4-5013.tablet
 /usr/share/libwacom/isdv4-5014.tablet
+/usr/share/libwacom/isdv4-502a.tablet
 /usr/share/libwacom/isdv4-503e.tablet
 /usr/share/libwacom/isdv4-503f.tablet
 /usr/share/libwacom/isdv4-5040.tablet
@@ -286,7 +290,10 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/isdv4-50f8.tablet
 /usr/share/libwacom/isdv4-50fd.tablet
 /usr/share/libwacom/isdv4-5110.tablet
+/usr/share/libwacom/isdv4-5122.tablet
 /usr/share/libwacom/isdv4-5146.tablet
+/usr/share/libwacom/isdv4-5150.tablet
+/usr/share/libwacom/isdv4-516b.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -328,6 +335,7 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/share/libwacom/layouts/dtk-2451.svg
 /usr/share/libwacom/layouts/dtu-1031.svg
 /usr/share/libwacom/layouts/dtu-1141.svg
+/usr/share/libwacom/layouts/dtu-1141b.svg
 /usr/share/libwacom/layouts/ek-remote.svg
 /usr/share/libwacom/layouts/graphire-wireless-8x6.svg
 /usr/share/libwacom/layouts/graphire4-4x5.svg
@@ -389,9 +397,9 @@ cp COPYING %{buildroot}/usr/share/doc/libwacom/COPYING
 /usr/lib64/libwacom.so.2.6.1
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/libwacom/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libwacom/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/libwacom-list-local-devices.1
