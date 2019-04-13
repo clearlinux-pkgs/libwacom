@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.32
-Release  : 15
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2
-Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.32/libwacom-0.32.tar.bz2.sig
-Summary  : Wacom model feature query library
+Version  : 0.33
+Release  : 16
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
+Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2.sig
+Summary  : Library to identify Wacom tablets and their features
 Group    : Development/Tools
 License  : HPND
 Requires: libwacom-bin = %{version}-%{release}
@@ -38,7 +38,6 @@ Summary: bin components for the libwacom package.
 Group: Binaries
 Requires: libwacom-data = %{version}-%{release}
 Requires: libwacom-license = %{version}-%{release}
-Requires: libwacom-man = %{version}-%{release}
 
 %description bin
 bin components for the libwacom package.
@@ -59,6 +58,7 @@ Requires: libwacom-lib = %{version}-%{release}
 Requires: libwacom-bin = %{version}-%{release}
 Requires: libwacom-data = %{version}-%{release}
 Provides: libwacom-devel = %{version}-%{release}
+Requires: libwacom = %{version}-%{release}
 
 %description dev
 dev components for the libwacom package.
@@ -91,14 +91,14 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.32
+%setup -q -n libwacom-0.33
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541435950
+export SOURCE_DATE_EPOCH=1555197385
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -114,7 +114,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1541435950
+export SOURCE_DATE_EPOCH=1555197385
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
 cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
@@ -129,6 +129,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/libwacom/bamboo-0fg-m-p-alt.tablet
+/usr/share/libwacom/bamboo-0fg-s-p-alt.tablet
 /usr/share/libwacom/bamboo-0fg-s-p.tablet
 /usr/share/libwacom/bamboo-16fg-m-pt.tablet
 /usr/share/libwacom/bamboo-16fg-s-p.tablet
@@ -146,12 +148,14 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/bamboo-4fg-s-t.tablet
 /usr/share/libwacom/bamboo-4fg-se-m-pt.tablet
 /usr/share/libwacom/bamboo-4fg-se-s-pt.tablet
+/usr/share/libwacom/bamboo-one-m-p.tablet
 /usr/share/libwacom/bamboo-one.tablet
 /usr/share/libwacom/bamboo-pad-wireless.tablet
 /usr/share/libwacom/bamboo-pad.tablet
 /usr/share/libwacom/cintiq-12wx.tablet
 /usr/share/libwacom/cintiq-13hd.tablet
 /usr/share/libwacom/cintiq-13hdt.tablet
+/usr/share/libwacom/cintiq-16.tablet
 /usr/share/libwacom/cintiq-20wsx.tablet
 /usr/share/libwacom/cintiq-21ux.tablet
 /usr/share/libwacom/cintiq-21ux2.tablet
@@ -189,6 +193,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/elan-22e2.tablet
 /usr/share/libwacom/elan-24db.tablet
 /usr/share/libwacom/elan-2537.tablet
+/usr/share/libwacom/elan-264c.tablet
+/usr/share/libwacom/elan-5515.tablet
 /usr/share/libwacom/generic.tablet
 /usr/share/libwacom/graphire-usb.tablet
 /usr/share/libwacom/graphire-wireless-8x6.tablet
@@ -198,6 +204,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/graphire3-6x8.tablet
 /usr/share/libwacom/graphire4-4x5.tablet
 /usr/share/libwacom/graphire4-6x8.tablet
+/usr/share/libwacom/huion-h420.tablet
 /usr/share/libwacom/huion-h610-pro.tablet
 /usr/share/libwacom/intuos-12x12.tablet
 /usr/share/libwacom/intuos-12x18.tablet
@@ -265,9 +272,12 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-4822.tablet
 /usr/share/libwacom/isdv4-4824.tablet
 /usr/share/libwacom/isdv4-4831.tablet
+/usr/share/libwacom/isdv4-4841.tablet
 /usr/share/libwacom/isdv4-484c.tablet
 /usr/share/libwacom/isdv4-485e.tablet
+/usr/share/libwacom/isdv4-4865.tablet
 /usr/share/libwacom/isdv4-486a.tablet
+/usr/share/libwacom/isdv4-4870.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -293,7 +303,12 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-5122.tablet
 /usr/share/libwacom/isdv4-5146.tablet
 /usr/share/libwacom/isdv4-5150.tablet
+/usr/share/libwacom/isdv4-5157.tablet
+/usr/share/libwacom/isdv4-5158.tablet
+/usr/share/libwacom/isdv4-515a.tablet
+/usr/share/libwacom/isdv4-5169.tablet
 /usr/share/libwacom/isdv4-516b.tablet
+/usr/share/libwacom/isdv4-517d.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -303,6 +318,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-ec.tablet
 /usr/share/libwacom/isdv4-ed.tablet
 /usr/share/libwacom/isdv4-ef.tablet
+/usr/share/libwacom/layouts/bamboo-0fg-s-p-alt.svg
 /usr/share/libwacom/layouts/bamboo-0fg-s-p.svg
 /usr/share/libwacom/layouts/bamboo-16fg-m-pt.svg
 /usr/share/libwacom/layouts/bamboo-16fg-s-pt.svg
@@ -340,6 +356,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/layouts/graphire-wireless-8x6.svg
 /usr/share/libwacom/layouts/graphire4-4x5.svg
 /usr/share/libwacom/layouts/graphire4-6x8.svg
+/usr/share/libwacom/layouts/huion-h420.svg
 /usr/share/libwacom/layouts/huion-h610-pro.svg
 /usr/share/libwacom/layouts/intuos-m-p.svg
 /usr/share/libwacom/layouts/intuos-m-p2.svg
