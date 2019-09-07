@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 0.33
-Release  : 16
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2
-Source99 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-0.33/libwacom-0.33.tar.bz2.sig
+Version  : 1.0
+Release  : 17
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2
+Source1 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2.sig
 Summary  : Library to identify Wacom tablets and their features
 Group    : Development/Tools
 License  : HPND
@@ -18,6 +18,7 @@ Requires: libwacom-data = %{version}-%{release}
 Requires: libwacom-lib = %{version}-%{release}
 Requires: libwacom-license = %{version}-%{release}
 Requires: libwacom-man = %{version}-%{release}
+BuildRequires : buildreq-meson
 BuildRequires : doxygen
 BuildRequires : gettext
 BuildRequires : intltool
@@ -59,6 +60,7 @@ Requires: libwacom-bin = %{version}-%{release}
 Requires: libwacom-data = %{version}-%{release}
 Provides: libwacom-devel = %{version}-%{release}
 Requires: libwacom = %{version}-%{release}
+Requires: libwacom = %{version}-%{release}
 
 %description dev
 dev components for the libwacom package.
@@ -91,30 +93,32 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-0.33
+%setup -q -n libwacom-1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1555197385
-export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1567896208
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1555197385
+export SOURCE_DATE_EPOCH=1567896208
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
 cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
@@ -122,6 +126,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/udev/rules.d/65-libwacom.rules
 
 %files bin
 %defattr(-,root,root,-)
@@ -159,6 +164,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/cintiq-20wsx.tablet
 /usr/share/libwacom/cintiq-21ux.tablet
 /usr/share/libwacom/cintiq-21ux2.tablet
+/usr/share/libwacom/cintiq-22.tablet
 /usr/share/libwacom/cintiq-22hd.tablet
 /usr/share/libwacom/cintiq-22hdt.tablet
 /usr/share/libwacom/cintiq-24hd-touch.tablet
@@ -180,6 +186,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/dth-2452.tablet
 /usr/share/libwacom/dti-520.tablet
 /usr/share/libwacom/dtk-1651.tablet
+/usr/share/libwacom/dtk-1660e.tablet
 /usr/share/libwacom/dtk-2241.tablet
 /usr/share/libwacom/dtk-2451.tablet
 /usr/share/libwacom/dtu-1031.tablet
@@ -190,9 +197,11 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/dtu-1931.tablet
 /usr/share/libwacom/dtu-2231.tablet
 /usr/share/libwacom/ek-remote.tablet
+/usr/share/libwacom/elan-2072.tablet
 /usr/share/libwacom/elan-22e2.tablet
 /usr/share/libwacom/elan-24db.tablet
 /usr/share/libwacom/elan-2537.tablet
+/usr/share/libwacom/elan-2627.tablet
 /usr/share/libwacom/elan-264c.tablet
 /usr/share/libwacom/elan-5515.tablet
 /usr/share/libwacom/generic.tablet
@@ -217,10 +226,9 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/intuos-m-p3.tablet
 /usr/share/libwacom/intuos-m-pt.tablet
 /usr/share/libwacom/intuos-m-pt2.tablet
-/usr/share/libwacom/intuos-pro-2-l-wl.tablet
 /usr/share/libwacom/intuos-pro-2-l.tablet
-/usr/share/libwacom/intuos-pro-2-m-wl.tablet
 /usr/share/libwacom/intuos-pro-2-m.tablet
+/usr/share/libwacom/intuos-pro-2-s.tablet
 /usr/share/libwacom/intuos-pro-l.tablet
 /usr/share/libwacom/intuos-pro-m.tablet
 /usr/share/libwacom/intuos-pro-s.tablet
@@ -263,8 +271,10 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-117.tablet
 /usr/share/libwacom/isdv4-124.tablet
 /usr/share/libwacom/isdv4-12c.tablet
+/usr/share/libwacom/isdv4-2d1f-002e.tablet
 /usr/share/libwacom/isdv4-4004.tablet
 /usr/share/libwacom/isdv4-4800.tablet
+/usr/share/libwacom/isdv4-4806.tablet
 /usr/share/libwacom/isdv4-4807.tablet
 /usr/share/libwacom/isdv4-4809.tablet
 /usr/share/libwacom/isdv4-4814.tablet
@@ -278,6 +288,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-4865.tablet
 /usr/share/libwacom/isdv4-486a.tablet
 /usr/share/libwacom/isdv4-4870.tablet
+/usr/share/libwacom/isdv4-488f.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -296,11 +307,15 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-50b4.tablet
 /usr/share/libwacom/isdv4-50b6.tablet
 /usr/share/libwacom/isdv4-50b8.tablet
+/usr/share/libwacom/isdv4-50db.tablet
+/usr/share/libwacom/isdv4-50e9.tablet
 /usr/share/libwacom/isdv4-50f1.tablet
 /usr/share/libwacom/isdv4-50f8.tablet
 /usr/share/libwacom/isdv4-50fd.tablet
 /usr/share/libwacom/isdv4-5110.tablet
 /usr/share/libwacom/isdv4-5122.tablet
+/usr/share/libwacom/isdv4-5128.tablet
+/usr/share/libwacom/isdv4-513b.tablet
 /usr/share/libwacom/isdv4-5146.tablet
 /usr/share/libwacom/isdv4-5150.tablet
 /usr/share/libwacom/isdv4-5157.tablet
@@ -365,6 +380,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/layouts/intuos-m-pt2.svg
 /usr/share/libwacom/layouts/intuos-pro-2-l.svg
 /usr/share/libwacom/layouts/intuos-pro-2-m.svg
+/usr/share/libwacom/layouts/intuos-pro-2-s.svg
 /usr/share/libwacom/layouts/intuos-pro-l.svg
 /usr/share/libwacom/layouts/intuos-pro-m.svg
 /usr/share/libwacom/layouts/intuos-pro-s.svg
