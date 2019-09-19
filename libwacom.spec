@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.0
-Release  : 17
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2
-Source1 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2.sig
+Version  : 1.1
+Release  : 18
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2
+Source1 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2.sig
 Summary  : Library to identify Wacom tablets and their features
 Group    : Development/Tools
 License  : HPND
@@ -30,9 +30,9 @@ BuildRequires : pkgconfig(librsvg-2.0)
 BuildRequires : pkgconfig(libxml-2.0)
 
 %description
-libwacom is a library to identify wacom tablets and their model-specific
-features. It provides easy access to information such as "is this a built-in
-on-screen tablet", "what is the size of this model", etc.
+SVG images have a dual purpose, providing an accurate representation of the
+tablets and also providing the size and location of the various controls on
+the device that can be queried by various applications that may need it.
 
 %package bin
 Summary: bin components for the libwacom package.
@@ -93,14 +93,14 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.0
+%setup -q -n libwacom-1.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567896208
+export SOURCE_DATE_EPOCH=1568869490
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -118,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1567896208
+export SOURCE_DATE_EPOCH=1568869490
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
 cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
@@ -313,6 +313,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-50f8.tablet
 /usr/share/libwacom/isdv4-50fd.tablet
 /usr/share/libwacom/isdv4-5110.tablet
+/usr/share/libwacom/isdv4-5115.tablet
 /usr/share/libwacom/isdv4-5122.tablet
 /usr/share/libwacom/isdv4-5128.tablet
 /usr/share/libwacom/isdv4-513b.tablet
