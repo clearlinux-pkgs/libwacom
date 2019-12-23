@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.1
-Release  : 18
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2
-Source1 : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2.sig
+Version  : 1.2
+Release  : 19
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2.sig
 Summary  : Library to identify Wacom tablets and their features
 Group    : Development/Tools
 License  : HPND
@@ -93,14 +93,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.1
+%setup -q -n libwacom-1.2
+cd %{_builddir}/libwacom-1.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568869490
+export SOURCE_DATE_EPOCH=1577138819
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -118,10 +119,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1568869490
+export SOURCE_DATE_EPOCH=1577138819
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
+cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -202,7 +203,10 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/elan-24db.tablet
 /usr/share/libwacom/elan-2537.tablet
 /usr/share/libwacom/elan-2627.tablet
+/usr/share/libwacom/elan-2628.tablet
 /usr/share/libwacom/elan-264c.tablet
+/usr/share/libwacom/elan-29a1.tablet
+/usr/share/libwacom/elan-29b6.tablet
 /usr/share/libwacom/elan-5515.tablet
 /usr/share/libwacom/generic.tablet
 /usr/share/libwacom/graphire-usb.tablet
@@ -289,6 +293,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-486a.tablet
 /usr/share/libwacom/isdv4-4870.tablet
 /usr/share/libwacom/isdv4-488f.tablet
+/usr/share/libwacom/isdv4-48c9.tablet
+/usr/share/libwacom/isdv4-48ed.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -309,6 +315,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-50b8.tablet
 /usr/share/libwacom/isdv4-50db.tablet
 /usr/share/libwacom/isdv4-50e9.tablet
+/usr/share/libwacom/isdv4-50ef.tablet
 /usr/share/libwacom/isdv4-50f1.tablet
 /usr/share/libwacom/isdv4-50f8.tablet
 /usr/share/libwacom/isdv4-50fd.tablet
@@ -318,6 +325,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-5128.tablet
 /usr/share/libwacom/isdv4-513b.tablet
 /usr/share/libwacom/isdv4-5146.tablet
+/usr/share/libwacom/isdv4-5147.tablet
 /usr/share/libwacom/isdv4-5150.tablet
 /usr/share/libwacom/isdv4-5157.tablet
 /usr/share/libwacom/isdv4-5158.tablet
@@ -325,6 +333,12 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/isdv4-5169.tablet
 /usr/share/libwacom/isdv4-516b.tablet
 /usr/share/libwacom/isdv4-517d.tablet
+/usr/share/libwacom/isdv4-5196.tablet
+/usr/share/libwacom/isdv4-51af.tablet
+/usr/share/libwacom/isdv4-51be.tablet
+/usr/share/libwacom/isdv4-51bf.tablet
+/usr/share/libwacom/isdv4-51c4.tablet
+/usr/share/libwacom/isdv4-51e2.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -409,7 +423,10 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 /usr/share/libwacom/layouts/mobilestudio-pro-16.svg
 /usr/share/libwacom/layouts/xp-pen-star03.svg
 /usr/share/libwacom/libwacom.stylus
+/usr/share/libwacom/mobilestudio-pro-13-2.tablet
 /usr/share/libwacom/mobilestudio-pro-13.tablet
+/usr/share/libwacom/mobilestudio-pro-16-2.tablet
+/usr/share/libwacom/mobilestudio-pro-16-3.tablet
 /usr/share/libwacom/mobilestudio-pro-16.tablet
 /usr/share/libwacom/n-trig-pen.tablet
 /usr/share/libwacom/one-by-wacom-m-p.tablet
@@ -432,7 +449,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libwacom/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libwacom/COPYING
+/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 
 %files man
 %defattr(0644,root,root,0755)
