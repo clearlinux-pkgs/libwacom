@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.2
-Release  : 19
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2.sig
+Version  : 1.3
+Release  : 20
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.3/libwacom-1.3.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.3/libwacom-1.3.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.3/libwacom-1.3.tar.bz2.sig
 Summary  : Library to identify Wacom tablets and their features
 Group    : Development/Tools
 License  : HPND
@@ -93,15 +93,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.2
-cd %{_builddir}/libwacom-1.2
+%setup -q -n libwacom-1.3
+cd %{_builddir}/libwacom-1.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1577138819
+export SOURCE_DATE_EPOCH=1585147480
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -119,10 +119,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1577138819
+export SOURCE_DATE_EPOCH=1585147480
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.3/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -204,6 +204,7 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/elan-2537.tablet
 /usr/share/libwacom/elan-2627.tablet
 /usr/share/libwacom/elan-2628.tablet
+/usr/share/libwacom/elan-262b.tablet
 /usr/share/libwacom/elan-264c.tablet
 /usr/share/libwacom/elan-29a1.tablet
 /usr/share/libwacom/elan-29b6.tablet
@@ -226,6 +227,8 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/intuos-9x12.tablet
 /usr/share/libwacom/intuos-m-p.tablet
 /usr/share/libwacom/intuos-m-p2.tablet
+/usr/share/libwacom/intuos-m-p3-android.tablet
+/usr/share/libwacom/intuos-m-p3-wl-android.tablet
 /usr/share/libwacom/intuos-m-p3-wl.tablet
 /usr/share/libwacom/intuos-m-p3.tablet
 /usr/share/libwacom/intuos-m-pt.tablet
@@ -238,6 +241,8 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/intuos-pro-s.tablet
 /usr/share/libwacom/intuos-s-p.tablet
 /usr/share/libwacom/intuos-s-p2.tablet
+/usr/share/libwacom/intuos-s-p3-android.tablet
+/usr/share/libwacom/intuos-s-p3-wl-android.tablet
 /usr/share/libwacom/intuos-s-p3-wl.tablet
 /usr/share/libwacom/intuos-s-p3.tablet
 /usr/share/libwacom/intuos-s-pt.tablet
@@ -275,6 +280,8 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-117.tablet
 /usr/share/libwacom/isdv4-124.tablet
 /usr/share/libwacom/isdv4-12c.tablet
+/usr/share/libwacom/isdv4-149.tablet
+/usr/share/libwacom/isdv4-2d1f-001e.tablet
 /usr/share/libwacom/isdv4-2d1f-002e.tablet
 /usr/share/libwacom/isdv4-4004.tablet
 /usr/share/libwacom/isdv4-4800.tablet
@@ -292,9 +299,12 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-4865.tablet
 /usr/share/libwacom/isdv4-486a.tablet
 /usr/share/libwacom/isdv4-4870.tablet
+/usr/share/libwacom/isdv4-4875.tablet
 /usr/share/libwacom/isdv4-488f.tablet
 /usr/share/libwacom/isdv4-48c9.tablet
+/usr/share/libwacom/isdv4-48ec.tablet
 /usr/share/libwacom/isdv4-48ed.tablet
+/usr/share/libwacom/isdv4-48ee.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -310,6 +320,7 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-5090.tablet
 /usr/share/libwacom/isdv4-5099.tablet
 /usr/share/libwacom/isdv4-509d.tablet
+/usr/share/libwacom/isdv4-509f.tablet
 /usr/share/libwacom/isdv4-50b4.tablet
 /usr/share/libwacom/isdv4-50b6.tablet
 /usr/share/libwacom/isdv4-50b8.tablet
@@ -334,11 +345,29 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-516b.tablet
 /usr/share/libwacom/isdv4-517d.tablet
 /usr/share/libwacom/isdv4-5196.tablet
+/usr/share/libwacom/isdv4-51a0.tablet
 /usr/share/libwacom/isdv4-51af.tablet
+/usr/share/libwacom/isdv4-51b0.tablet
+/usr/share/libwacom/isdv4-51b1.tablet
+/usr/share/libwacom/isdv4-51b2.tablet
+/usr/share/libwacom/isdv4-51b3.tablet
+/usr/share/libwacom/isdv4-51b6.tablet
+/usr/share/libwacom/isdv4-51b7.tablet
+/usr/share/libwacom/isdv4-51b8.tablet
+/usr/share/libwacom/isdv4-51b9.tablet
+/usr/share/libwacom/isdv4-51ba.tablet
+/usr/share/libwacom/isdv4-51bb.tablet
+/usr/share/libwacom/isdv4-51bc.tablet
+/usr/share/libwacom/isdv4-51bd.tablet
 /usr/share/libwacom/isdv4-51be.tablet
 /usr/share/libwacom/isdv4-51bf.tablet
 /usr/share/libwacom/isdv4-51c4.tablet
 /usr/share/libwacom/isdv4-51e2.tablet
+/usr/share/libwacom/isdv4-51f5.tablet
+/usr/share/libwacom/isdv4-51f6.tablet
+/usr/share/libwacom/isdv4-521f.tablet
+/usr/share/libwacom/isdv4-5221.tablet
+/usr/share/libwacom/isdv4-5222.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -434,6 +463,7 @@ cp %{_builddir}/libwacom-1.2/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/one-by-wacom-s-p.tablet
 /usr/share/libwacom/one-by-wacom-s-p2.tablet
 /usr/share/libwacom/serial-wacf004.tablet
+/usr/share/libwacom/wacom-one.tablet
 /usr/share/libwacom/xp-pen-star03.tablet
 
 %files dev
