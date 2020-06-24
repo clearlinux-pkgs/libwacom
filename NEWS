@@ -1,3 +1,15 @@
+libwacom 1.4:
+- New devices:
+  - Dell Latitude 7200 2-in-1, Dell Latitude 7400 2-in-1
+  - Elan 2415
+  - HP ENVY x360 Convertible 13,
+  - Huion 420, 1060 Plus,
+  - GAOMON S56K
+  - Wacom FT-0405
+  - Many AES stylus definitions added
+- New API: libwacom_stylus_get_eraser_type()
+- udev rules are now using hwdb entries
+
 libwacom 1.3:
 - New devices:
   - Wacom One Pen Display 13
@@ -15,7 +27,7 @@ libwacom 1.2:
   - Elan 2628
   - Lenovo X1 Yoga 4th, X1 Yoga 3d, Yoga 720, Yoga C930, Yoga C940, X390
     Yoga, IdeaPad FLEX-14API
-  - ASUS ZenBook Pro Duo 
+  - ASUS ZenBook Pro Duo
 
 libwacom 1.1:
 - New devices: Wacom HID 5115
@@ -216,8 +228,8 @@ libwacom 0.7.1:
 - Better checks to prevent bad databases
 
 libwacom 0.7:
-- New devices: 
-  - Cintiq 22HD, 24HD touch, 
+- New devices:
+  - Cintiq 22HD, 24HD touch,
   - ISDv4 E5, 100, 101
 - Support for SVG layouts of the tablets
 - New APIs for:
