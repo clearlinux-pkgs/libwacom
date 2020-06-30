@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.4
-Release  : 21
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4/libwacom-1.4.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4/libwacom-1.4.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4/libwacom-1.4.tar.bz2.sig
+Version  : 1.4.1
+Release  : 22
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4.1/libwacom-1.4.1.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4.1/libwacom-1.4.1.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.4.1/libwacom-1.4.1.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -92,15 +92,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.4
-cd %{_builddir}/libwacom-1.4
+%setup -q -n libwacom-1.4.1
+cd %{_builddir}/libwacom-1.4.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1593017483
+export SOURCE_DATE_EPOCH=1593528227
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -117,10 +117,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1593017483
+export SOURCE_DATE_EPOCH=1593528227
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.4/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.4.1/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -299,6 +299,7 @@ cp %{_builddir}/libwacom-1.4/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-4831.tablet
 /usr/share/libwacom/isdv4-4841.tablet
 /usr/share/libwacom/isdv4-484c.tablet
+/usr/share/libwacom/isdv4-4851.tablet
 /usr/share/libwacom/isdv4-485e.tablet
 /usr/share/libwacom/isdv4-4865.tablet
 /usr/share/libwacom/isdv4-486a.tablet
@@ -308,6 +309,7 @@ cp %{_builddir}/libwacom-1.4/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-48c9.tablet
 /usr/share/libwacom/isdv4-48ca.tablet
 /usr/share/libwacom/isdv4-48ce.tablet
+/usr/share/libwacom/isdv4-48d6.tablet
 /usr/share/libwacom/isdv4-48ec.tablet
 /usr/share/libwacom/isdv4-48ed.tablet
 /usr/share/libwacom/isdv4-48ee.tablet
