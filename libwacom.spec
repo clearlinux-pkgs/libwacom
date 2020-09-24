@@ -6,7 +6,7 @@
 #
 Name     : libwacom
 Version  : 1.5
-Release  : 23
+Release  : 24
 URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2
 Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2
 Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2.sig
