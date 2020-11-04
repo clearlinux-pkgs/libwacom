@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.5
-Release  : 24
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.5/libwacom-1.5.tar.bz2.sig
+Version  : 1.6
+Release  : 25
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -24,9 +24,7 @@ BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : itstool
 BuildRequires : pkgconfig(glib-2.0)
-BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(gudev-1.0)
-BuildRequires : pkgconfig(librsvg-2.0)
 BuildRequires : pkgconfig(libxml-2.0)
 
 %description
@@ -92,15 +90,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.5
-cd %{_builddir}/libwacom-1.5
+%setup -q -n libwacom-1.6
+cd %{_builddir}/libwacom-1.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598909558
+export SOURCE_DATE_EPOCH=1604509585
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -117,10 +115,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1598909558
+export SOURCE_DATE_EPOCH=1604509585
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.5/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.6/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -484,6 +482,8 @@ cp %{_builddir}/libwacom-1.5/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/serial-wacf004.tablet
 /usr/share/libwacom/volito-4x5.tablet
 /usr/share/libwacom/wacom-one.tablet
+/usr/share/libwacom/xp-pen-g430.tablet
+/usr/share/libwacom/xp-pen-g640.tablet
 /usr/share/libwacom/xp-pen-star03.tablet
 
 %files dev
