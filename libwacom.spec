@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.6
-Release  : 25
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.6/libwacom-1.6.tar.bz2.sig
+Version  : 1.7
+Release  : 26
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -90,15 +90,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.6
-cd %{_builddir}/libwacom-1.6
+%setup -q -n libwacom-1.7
+cd %{_builddir}/libwacom-1.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604509585
+export SOURCE_DATE_EPOCH=1608168109
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -115,10 +115,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1604509585
+export SOURCE_DATE_EPOCH=1608168109
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.6/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -299,6 +299,7 @@ cp %{_builddir}/libwacom-1.6/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-4822.tablet
 /usr/share/libwacom/isdv4-4824.tablet
 /usr/share/libwacom/isdv4-4831.tablet
+/usr/share/libwacom/isdv4-4834.tablet
 /usr/share/libwacom/isdv4-4838.tablet
 /usr/share/libwacom/isdv4-4841.tablet
 /usr/share/libwacom/isdv4-484c.tablet
@@ -313,9 +314,11 @@ cp %{_builddir}/libwacom-1.6/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-48ca.tablet
 /usr/share/libwacom/isdv4-48ce.tablet
 /usr/share/libwacom/isdv4-48d6.tablet
+/usr/share/libwacom/isdv4-48eb.tablet
 /usr/share/libwacom/isdv4-48ec.tablet
 /usr/share/libwacom/isdv4-48ed.tablet
 /usr/share/libwacom/isdv4-48ee.tablet
+/usr/share/libwacom/isdv4-48f6.tablet
 /usr/share/libwacom/isdv4-490b.tablet
 /usr/share/libwacom/isdv4-4957.tablet
 /usr/share/libwacom/isdv4-495f.tablet
@@ -377,9 +380,11 @@ cp %{_builddir}/libwacom-1.6/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-51be.tablet
 /usr/share/libwacom/isdv4-51bf.tablet
 /usr/share/libwacom/isdv4-51c4.tablet
+/usr/share/libwacom/isdv4-51c7.tablet
 /usr/share/libwacom/isdv4-51e2.tablet
 /usr/share/libwacom/isdv4-51f5.tablet
 /usr/share/libwacom/isdv4-51f6.tablet
+/usr/share/libwacom/isdv4-5215.tablet
 /usr/share/libwacom/isdv4-521f.tablet
 /usr/share/libwacom/isdv4-5221.tablet
 /usr/share/libwacom/isdv4-5222.tablet
