@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.7
-Release  : 26
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.7/libwacom-1.7.tar.bz2.sig
+Version  : 1.8
+Release  : 27
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -90,15 +90,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.7
-cd %{_builddir}/libwacom-1.7
+%setup -q -n libwacom-1.8
+cd %{_builddir}/libwacom-1.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1608168109
+export SOURCE_DATE_EPOCH=1611929741
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -115,10 +115,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1608168109
+export SOURCE_DATE_EPOCH=1611929741
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -225,6 +225,7 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/huion-420.tablet
 /usr/share/libwacom/huion-h420.tablet
 /usr/share/libwacom/huion-h610-pro.tablet
+/usr/share/libwacom/huion-h950p.tablet
 /usr/share/libwacom/huion-new-1060-plus.tablet
 /usr/share/libwacom/intuos-12x12.tablet
 /usr/share/libwacom/intuos-12x18.tablet
@@ -319,9 +320,12 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-48ed.tablet
 /usr/share/libwacom/isdv4-48ee.tablet
 /usr/share/libwacom/isdv4-48f6.tablet
+/usr/share/libwacom/isdv4-490a.tablet
 /usr/share/libwacom/isdv4-490b.tablet
 /usr/share/libwacom/isdv4-4957.tablet
 /usr/share/libwacom/isdv4-495f.tablet
+/usr/share/libwacom/isdv4-496c.tablet
+/usr/share/libwacom/isdv4-4988.tablet
 /usr/share/libwacom/isdv4-5000.tablet
 /usr/share/libwacom/isdv4-5002.tablet
 /usr/share/libwacom/isdv4-5010.tablet
@@ -334,6 +338,7 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-5044.tablet
 /usr/share/libwacom/isdv4-5048.tablet
 /usr/share/libwacom/isdv4-504a.tablet
+/usr/share/libwacom/isdv4-5072.tablet
 /usr/share/libwacom/isdv4-5090.tablet
 /usr/share/libwacom/isdv4-5099.tablet
 /usr/share/libwacom/isdv4-509d.tablet
@@ -355,6 +360,7 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-5144.tablet
 /usr/share/libwacom/isdv4-5146.tablet
 /usr/share/libwacom/isdv4-5147.tablet
+/usr/share/libwacom/isdv4-5148.tablet
 /usr/share/libwacom/isdv4-5150.tablet
 /usr/share/libwacom/isdv4-5157.tablet
 /usr/share/libwacom/isdv4-5158.tablet
@@ -382,10 +388,13 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-51c4.tablet
 /usr/share/libwacom/isdv4-51c7.tablet
 /usr/share/libwacom/isdv4-51e2.tablet
+/usr/share/libwacom/isdv4-51e9.tablet
 /usr/share/libwacom/isdv4-51f5.tablet
 /usr/share/libwacom/isdv4-51f6.tablet
+/usr/share/libwacom/isdv4-5202.tablet
 /usr/share/libwacom/isdv4-5215.tablet
 /usr/share/libwacom/isdv4-521f.tablet
+/usr/share/libwacom/isdv4-5220.tablet
 /usr/share/libwacom/isdv4-5221.tablet
 /usr/share/libwacom/isdv4-5222.tablet
 /usr/share/libwacom/isdv4-90.tablet
@@ -438,6 +447,7 @@ cp %{_builddir}/libwacom-1.7/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/layouts/graphire4-6x8.svg
 /usr/share/libwacom/layouts/huion-h420.svg
 /usr/share/libwacom/layouts/huion-h610-pro.svg
+/usr/share/libwacom/layouts/huion-h950p.svg
 /usr/share/libwacom/layouts/huion-new-1060-plus.svg
 /usr/share/libwacom/layouts/intuos-m-p.svg
 /usr/share/libwacom/layouts/intuos-m-p2.svg
