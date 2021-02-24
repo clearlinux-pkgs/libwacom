@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.8
-Release  : 27
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.8/libwacom-1.8.tar.bz2.sig
+Version  : 1.9
+Release  : 28
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -90,15 +90,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.8
-cd %{_builddir}/libwacom-1.8
+%setup -q -n libwacom-1.9
+cd %{_builddir}/libwacom-1.9
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1611929741
+export SOURCE_DATE_EPOCH=1614180254
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -115,10 +115,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1611929741
+export SOURCE_DATE_EPOCH=1614180254
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -129,6 +129,7 @@ cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/lib
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/libwacom-list-local-devices
+/usr/bin/libwacom-show-stylus
 
 %files data
 %defattr(-,root,root,-)
@@ -202,6 +203,7 @@ cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/elan-22e2.tablet
 /usr/share/libwacom/elan-24db.tablet
 /usr/share/libwacom/elan-2514-alt.tablet
+/usr/share/libwacom/elan-2514-alt2.tablet
 /usr/share/libwacom/elan-2514.tablet
 /usr/share/libwacom/elan-2537.tablet
 /usr/share/libwacom/elan-2627.tablet
@@ -222,6 +224,7 @@ cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/graphire3-6x8.tablet
 /usr/share/libwacom/graphire4-4x5.tablet
 /usr/share/libwacom/graphire4-6x8.tablet
+/usr/share/libwacom/hp-pro-tablet-408.tablet
 /usr/share/libwacom/huion-420.tablet
 /usr/share/libwacom/huion-h420.tablet
 /usr/share/libwacom/huion-h610-pro.tablet
@@ -391,12 +394,19 @@ cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-51e9.tablet
 /usr/share/libwacom/isdv4-51f5.tablet
 /usr/share/libwacom/isdv4-51f6.tablet
+/usr/share/libwacom/isdv4-51f9.tablet
 /usr/share/libwacom/isdv4-5202.tablet
+/usr/share/libwacom/isdv4-5204.tablet
 /usr/share/libwacom/isdv4-5215.tablet
+/usr/share/libwacom/isdv4-5216.tablet
 /usr/share/libwacom/isdv4-521f.tablet
 /usr/share/libwacom/isdv4-5220.tablet
 /usr/share/libwacom/isdv4-5221.tablet
 /usr/share/libwacom/isdv4-5222.tablet
+/usr/share/libwacom/isdv4-5229.tablet
+/usr/share/libwacom/isdv4-523a.tablet
+/usr/share/libwacom/isdv4-5256.tablet
+/usr/share/libwacom/isdv4-528e.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
 /usr/share/libwacom/isdv4-e2.tablet
@@ -495,6 +505,7 @@ cp %{_builddir}/libwacom-1.8/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/one-by-wacom-s-p.tablet
 /usr/share/libwacom/one-by-wacom-s-p2.tablet
 /usr/share/libwacom/serial-wacf004.tablet
+/usr/share/libwacom/surface-go.tablet
 /usr/share/libwacom/volito-4x5.tablet
 /usr/share/libwacom/wacom-one.tablet
 /usr/share/libwacom/xp-pen-g430.tablet
