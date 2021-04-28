@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.9
-Release  : 28
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.9/libwacom-1.9.tar.bz2.sig
+Version  : 1.10
+Release  : 29
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.10/libwacom-1.10.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.10/libwacom-1.10.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.10/libwacom-1.10.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -28,9 +28,10 @@ BuildRequires : pkgconfig(gudev-1.0)
 BuildRequires : pkgconfig(libxml-2.0)
 
 %description
-SVG images have a dual purpose, providing an accurate representation of the
-tablets and also providing the size and location of the various controls on
-the device that can be queried by various applications that may need it.
+# Overview
+libwacom is a library to identify Wacom tablets and their model-specific
+features. It provides easy access to information such as "is this a built-in
+on-screen tablet", "what is the size of this model", etc.
 
 %package bin
 Summary: bin components for the libwacom package.
@@ -90,15 +91,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.9
-cd %{_builddir}/libwacom-1.9
+%setup -q -n libwacom-1.10
+cd %{_builddir}/libwacom-1.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1614180254
+export SOURCE_DATE_EPOCH=1619620388
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -115,10 +116,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1614180254
+export SOURCE_DATE_EPOCH=1619620388
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.10/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -128,8 +129,10 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 
 %files bin
 %defattr(-,root,root,-)
+/usr/bin/libwacom-list-devices
 /usr/bin/libwacom-list-local-devices
 /usr/bin/libwacom-show-stylus
+/usr/bin/libwacom-update-db
 
 %files data
 %defattr(-,root,root,-)
@@ -228,6 +231,7 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/huion-420.tablet
 /usr/share/libwacom/huion-h420.tablet
 /usr/share/libwacom/huion-h610-pro.tablet
+/usr/share/libwacom/huion-h640p.tablet
 /usr/share/libwacom/huion-h950p.tablet
 /usr/share/libwacom/huion-new-1060-plus.tablet
 /usr/share/libwacom/intuos-12x12.tablet
@@ -293,6 +297,7 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-149.tablet
 /usr/share/libwacom/isdv4-2d1f-001e.tablet
 /usr/share/libwacom/isdv4-2d1f-002e.tablet
+/usr/share/libwacom/isdv4-2d1f-0163.tablet
 /usr/share/libwacom/isdv4-4004.tablet
 /usr/share/libwacom/isdv4-4800.tablet
 /usr/share/libwacom/isdv4-4806.tablet
@@ -406,6 +411,13 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/isdv4-5229.tablet
 /usr/share/libwacom/isdv4-523a.tablet
 /usr/share/libwacom/isdv4-5256.tablet
+/usr/share/libwacom/isdv4-5276.tablet
+/usr/share/libwacom/isdv4-5277.tablet
+/usr/share/libwacom/isdv4-5278.tablet
+/usr/share/libwacom/isdv4-5279.tablet
+/usr/share/libwacom/isdv4-527a.tablet
+/usr/share/libwacom/isdv4-527e.tablet
+/usr/share/libwacom/isdv4-527f.tablet
 /usr/share/libwacom/isdv4-528e.tablet
 /usr/share/libwacom/isdv4-90.tablet
 /usr/share/libwacom/isdv4-93.tablet
@@ -457,6 +469,7 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 /usr/share/libwacom/layouts/graphire4-6x8.svg
 /usr/share/libwacom/layouts/huion-h420.svg
 /usr/share/libwacom/layouts/huion-h610-pro.svg
+/usr/share/libwacom/layouts/huion-h640p.svg
 /usr/share/libwacom/layouts/huion-h950p.svg
 /usr/share/libwacom/layouts/huion-new-1060-plus.svg
 /usr/share/libwacom/layouts/intuos-m-p.svg
@@ -529,4 +542,5 @@ cp %{_builddir}/libwacom-1.9/COPYING %{buildroot}/usr/share/package-licenses/lib
 
 %files man
 %defattr(0644,root,root,0755)
+/usr/share/man/man1/libwacom-list-devices.1
 /usr/share/man/man1/libwacom-list-local-devices.1
