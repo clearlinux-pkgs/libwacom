@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE23B7E70B467F0BF (office@who-t.net)
 #
 Name     : libwacom
-Version  : 1.11
-Release  : 30
-URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.11/libwacom-1.11.tar.bz2
-Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.11/libwacom-1.11.tar.bz2
-Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.11/libwacom-1.11.tar.bz2.sig
+Version  : 1.12
+Release  : 31
+URL      : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.12/libwacom-1.12.tar.bz2
+Source0  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.12/libwacom-1.12.tar.bz2
+Source1  : https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.12/libwacom-1.12.tar.bz2.sig
 Summary  : Wacom model feature query library
 Group    : Development/Tools
 License  : HPND
@@ -91,15 +91,15 @@ man components for the libwacom package.
 
 
 %prep
-%setup -q -n libwacom-1.11
-cd %{_builddir}/libwacom-1.11
+%setup -q -n libwacom-1.12
+cd %{_builddir}/libwacom-1.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1626446388
+export SOURCE_DATE_EPOCH=1631206909
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition "
@@ -116,10 +116,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1626446388
+export SOURCE_DATE_EPOCH=1631206909
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libwacom
-cp %{_builddir}/libwacom-1.11/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
+cp %{_builddir}/libwacom-1.12/COPYING %{buildroot}/usr/share/package-licenses/libwacom/8e668446f99b374135786b7ef7ee75ddfafbaef2
 %make_install
 
 %files
@@ -204,7 +204,9 @@ cp %{_builddir}/libwacom-1.11/COPYING %{buildroot}/usr/share/package-licenses/li
 /usr/share/libwacom/elan-0732.tablet
 /usr/share/libwacom/elan-2072.tablet
 /usr/share/libwacom/elan-22e2.tablet
+/usr/share/libwacom/elan-24d8.tablet
 /usr/share/libwacom/elan-24db.tablet
+/usr/share/libwacom/elan-2513.tablet
 /usr/share/libwacom/elan-2514-alt.tablet
 /usr/share/libwacom/elan-2514-alt2.tablet
 /usr/share/libwacom/elan-2514.tablet
@@ -215,6 +217,7 @@ cp %{_builddir}/libwacom-1.11/COPYING %{buildroot}/usr/share/package-licenses/li
 /usr/share/libwacom/elan-264c.tablet
 /usr/share/libwacom/elan-29a1.tablet
 /usr/share/libwacom/elan-29b6.tablet
+/usr/share/libwacom/elan-2ad9.tablet
 /usr/share/libwacom/elan-5515.tablet
 /usr/share/libwacom/gaomon-s620.tablet
 /usr/share/libwacom/generic.tablet
@@ -527,6 +530,7 @@ cp %{_builddir}/libwacom-1.11/COPYING %{buildroot}/usr/share/package-licenses/li
 /usr/share/libwacom/surface-go.tablet
 /usr/share/libwacom/volito-4x5.tablet
 /usr/share/libwacom/wacom-one.tablet
+/usr/share/libwacom/waltop-slim-tablet-12-1.tablet
 /usr/share/libwacom/xp-pen-g430.tablet
 /usr/share/libwacom/xp-pen-g640.tablet
 /usr/share/libwacom/xp-pen-star03.tablet
