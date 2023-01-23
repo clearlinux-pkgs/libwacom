@@ -1,5 +1,5 @@
 PKG_NAME := libwacom
-URL = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.12/libwacom-1.12.tar.bz2
+URL = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.6.0/libwacom-2.6.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common

@@ -1,3 +1,59 @@
+libwacom 2.6:
+- New Devices
+  - ASUS ROG Flow X16
+  - XP-Pen Deco01 v2
+  - Huion Kamvas 13
+  - Wacom HID 52FA Pen
+  - Ugee M708 v1
+
+libwacom 2.5:
+- New Devices
+  - Cintiq Pro 27
+  - Intuos Pro Small refresh
+  - Dell Chromebook 11 5190 2-in-1
+  - Dell Inspiron 14 7425 2-in-1
+  - Fujitsu U729X
+
+libwacom 2.4:
+- New Devices:
+  - Huion Inspiroy H1060P
+  - XP-Pen Artist 12, Deco L
+  - Chuwi MiniBook X
+
+libwacom 2.3:
+- New Devices:
+  - Acer Chromebook Spin 13
+  - Huion HS611
+  - Lenovo 14s Yoga, X13 Yoga, X1 Yoga, X380
+  - Samsung Galaxy Book Pro 360, Flex2
+- Devices matching a "* Keyboard" glob are no longer treated as tablets
+
+libwacom 2.2:
+- New Devices:
+  - Lenovo X1 Yoga Gen6, X1 Titanium Gen1
+  - Fujitsu Lifebook T935
+  - Wacom One Pen Display 13
+
+libwacom 2.1:
+- New Devices:
+  - Dell Latitude 5290
+  - Lenovo ThinkPad X1 Tablet Gen3, Yoga 7
+  - Pine64 PineNote
+  - HP ProBook x360
+
+libwacom 2.0:
+- New major version with a soname bump. Some symbols have been
+  dropped but no user should've ever used those anyway. See commit
+  b9961dbe912fa096230460b194eebdc8a590d256 for details.
+- New Devices:
+  - LetSketch WP9620
+  - Wacom Intuos BT, Cintiq Pro 16
+  - ISDv4 523a
+  - Dell Latitude 5290, 7275, 7320
+  - Asus Zenbook Flip S13
+  - HP EliteBook x360, ZBook x2 G4
+  - Lenovo Thinkpad 13 Yoga Gen 2, Yoga 6, Ideapad Flex5, Yoga C740
+
 libwacom 1.12:
 - New devices:
   - ELAN 2513
