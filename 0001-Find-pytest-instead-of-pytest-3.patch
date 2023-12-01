@@ -1,25 +1,16 @@
-From 522b790859bface71765e9afd1851f85761af245 Mon Sep 17 00:00:00 2001
+From b79c0cf7df86e70b8848668111aa541efd3bb67c Mon Sep 17 00:00:00 2001
 From: "Brett T. Warden" <brett.t.warden@intel.com>
 Date: Mon, 23 Jan 2023 09:39:50 -0800
 Subject: [PATCH] Find pytest instead of pytest-3
 
 ---
- meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index d5d4d9e522f3..0f6a03c1c53b 100644
+index 2cf0c1033fb8..245a66270d89 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -126,7 +126,7 @@ test('files-in-git',
- 
- # This is a generic pytest invocation. If we end up with more than one
- # pytest-compatible test somewhere, we'll conveniently run that one too.
--pytest = find_program('pytest-3', required: false)
-+pytest = find_program('pytest', required: false)
- if pytest.found()
- 	test('pytests', pytest,
- 	     args: ['-vv', '--log-level=DEBUG'],
 @@ -288,7 +288,7 @@ if get_option('tests').enabled()
  	endif
  
@@ -30,5 +21,5 @@ index d5d4d9e522f3..0f6a03c1c53b 100644
  	     pytest,
  	     args: [meson.current_source_dir()],
 -- 
-2.39.1
+2.43.0
 
