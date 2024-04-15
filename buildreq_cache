@@ -1,4 +1,4 @@
-2.10.0
+2.11.0
 libgudev-dev
 pkgconfig(gudev-1.0)
 pkgconfig(libxml-2.0)
