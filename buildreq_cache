@@ -1,5 +1,4 @@
-2.11.0
+2.12.2
 libgudev-dev
 pkgconfig(gudev-1.0)
-pkgconfig(libxml-2.0)
 valgrind
