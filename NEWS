@@ -1,3 +1,36 @@
+libwacom 2.15.0:
+- New API:
+  - libwacom_get_button_modeswitch_mode() to retrieve the target mode for a
+    modeswitch button
+- New Devices:
+  - XP-Pen Innovator 16, Deco01 v3, Deco Pro S
+  - Wacom Intuos Pro 3 and a large number of ISDv4 devices
+
+libwacom 2.14.0:
+- New API:
+  - libwacom now supports stylis from vendors other than Wacom with these new APIs
+    - libwacom_get_styli
+    - libwacom_stylus_get_paired_styli
+    - libwacom_stylus_get_vendor_id
+  - A new WACOM_DEVICE_INTEGRATED_REMOTE flag is available for remotes like the
+    Wacom ExpressKey Remote, Huion K20, etc.
+  - WACOM_STATUS_LED_DIAL and DIAL2 are now available to indicate dial status ledsj
+- New behaviour: $XDG_CONFIG_HOME/libwacom is now supported as path for
+  local .tablet files.
+- New Devices:
+  - StarLite Mk V
+  - Asus Zenbook UX8406MA
+  - Lenovo Yoga 9, Ideapad Flex 5, Yoga X1 Gen5
+  - XP Pen Artist 22R Pro, 24 Pro, ACK05 Remote, Deco Fun L
+  - HP Pavilion x360, Spectre x360
+  - Huion KeyDial K20
+
+libwacom 2.13.0
+- New Devices:
+  - HP Elite Chromebook c1030
+  - Asus ZenBook Pro Duo
+  - Wacom Pro Pen 3E
+
 libwacom 2.12.2
 - No new devices or APIs, bugfix release only
 
